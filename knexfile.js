@@ -3,10 +3,10 @@
 module.exports = {
   development: {
     client: "sqlite3",
-    useNullAssDefault: true,
     connection: {
       filename: "./data/sprint.db3"
     },
+    useNullAssDefault: true,
     migrations: {
       directory: "./data/migrations"
     },
