@@ -3,7 +3,9 @@ const db = require("../dbConfig.js");
 module.exports = {
   get,
   getById,
-  add
+  add,
+  update,
+  remove
 };
 
 function get() {
@@ -21,3 +23,16 @@ async function add(hub) {
 
   return getById(id);
 }
+
+function update(id, changes) {
+    return db("resources")
+      .where("id", id)
+      .update(changes)
+      .then(count => (count > 0 ? this.get(id) : null));
+  }
+  
+  function remove(id) {
+    return db("resources")
+      .where("id", id)
+      .del();
+  }
